@@ -49,7 +49,6 @@ export const postsRouter = createTRPCRouter({
     return posts.map((post) => {
       const author = users.find((user) => user.id === post.authorId);
 
-      // at 59:00 of the video is where im at
       if (!author?.username)
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
@@ -69,7 +68,7 @@ export const postsRouter = createTRPCRouter({
   create: privateProcedure
     .input(
       z.object({
-        content: z.string().emoji().min(1).max(280),
+        content: z.string().emoji("Only emojis are allowed!").min(1).max(280),
       })
     )
     .mutation(async ({ ctx, input }) => {
