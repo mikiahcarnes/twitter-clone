@@ -4,4 +4,14 @@
 
 body {
   @apply bg-black text-slate-100;
+
+  overscroll-behavior: none;
+}
+
+.invisible-scrollbar::-webkit-scrollbar {
+  width: 0px;
+}
+
+.invisible-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
 }
